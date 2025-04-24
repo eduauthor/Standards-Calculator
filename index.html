@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Standards Calculator - Find Your Ideal Partner</title>
+    <meta name="google-site-verification" content="OoUxsu9Epr_sX0QrKzFw1BpyWpmjnpP_eHdGd88j3kU" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <style>
+        <meta name="google-site-verification" content="OoUxsu9Epr_sX0QrKzFw1BpyWpmjnpP_eHdGd88j3kU" />
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #232946 100%);
+            min-height: 100vh;
+        }
+        .glass {
+            background: rgba(255,255,255,0.15);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 32px 0 rgba(31, 41, 55, 0.25);
+            backdrop-filter: blur(8px);
+        }
+        .form-select, .form-input {
+            background: rgba(255,255,255,0.125);
+        }
+    </style
+        <meta name="google-site-verification" content="OoUxsu9Epr_sX0QrKzFw1BpyWpmjnpP_eHdGd88j3kU" />
+</head>
+<body class="text-gray-100">
+    <header class="w-full py-6 bg-gradient-to-tr from-yellow-400 via-orange-300 to-orange-500 shadow-lg mb-12">
+        <div class="max-w-2xl mx-auto flex items-center justify-start px-5">
+            <i class="fa-solid fa-heart fa-xl mr-3 text-pink-600"></i>
+            <h1 class="text-3xl font-bold text-gray-900 tracking-tight">Standards Calculator</h1>
+        </div>
+    </header>
+    <main class="max-w-2xl mx-auto mb-16 px-2">
+        <form id="standardsForm" class="glass py-10 px-8 shadow-lg space-y-7">
+            <h2 class="text-2xl font-bold mb-4 text-center text-white">Discover your chances of finding your ideal partner</h2>
+            <p class="text-center text-sm text-yellow-200 mb-6">Enter your preferences below, click <span class="font-semibold">Calculate</span>, and discover what percent and how many people meet your standards.<br>
+            <span class="italic text-yellow-100">Simulated for demonstration. US population basis: 333,000,000.</span></p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block font-semibold mb-1" for="lookingFor">Looking for</label>
+                    <select id="lookingFor" name="lookingFor" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900" required>
+                        <option value="women">Women</option>
+                        <option value="men">Men</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="kids">Desire Children?</label>
+                    <select id="kids" name="kids" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="any">No Preference</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="ageMin">Age Min</label>
+                    <input id="ageMin" name="ageMin" type="number" min="18" max="80" value="25" class="form-input block w-full py-2 pl-3 pr-3 rounded text-gray-900" required>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="ageMax">Age Max</label>
+                    <input id="ageMax" name="ageMax" type="number" min="18" max="80" value="34" class="form-input block w-full py-2 pl-3 pr-3 rounded text-gray-900" required>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="minHeight">Minimum Height (cm)</label>
+                    <input id="minHeight" name="minHeight" type="number" min="140" max="225" value="160" class="form-input block w-full py-2 pl-3 pr-3 rounded text-gray-900">
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="minIncome">Minimum Income ($)</label>
+                    <input id="minIncome" name="minIncome" type="number" min="0" max="1000000" step="1000" value="50000" class="form-input block w-full py-2 pl-3 pr-3 rounded text-gray-900">
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="ethnicity">Ethnicity</label>
+                    <select id="ethnicity" name="ethnicity" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="any">Any</option>
+                        <option value="white">White</option>
+                        <option value="black">Black or African American</option>
+                        <option value="asian">Asian</option>
+                        <option value="hispanic">Hispanic or Latino</option>
+                        <option value="mixed">Mixed/Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="hair">Hair Color</label>
+                    <select id="hair" name="hair" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="any">Any</option>
+                        <option value="blonde">Blonde</option>
+                        <option value="brown">Brown</option>
+                        <option value="black">Black</option>
+                        <option value="red">Red</option>
+                        <option value="gray">Gray/White</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="eyes">Eye Color</label>
+                    <select id="eyes" name="eyes" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="any">Any</option>
+                        <option value="brown">Brown</option>
+                        <option value="blue">Blue</option>
+                        <option value="green">Green</option>
+                        <option value="hazel">Hazel</option>
+                        <option value="gray">Gray</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="education">Education</label>
+                    <select id="education" name="education" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="any">Any</option>
+                        <option value="none">No degree</option>
+                        <option value="hs">High School</option>
+                        <option value="some_college">Some College</option>
+                        <option value="bachelor">Bachelor's</option>
+                        <option value="master">Master's or higher</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="religion">Religion</label>
+                    <select id="religion" name="religion" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="any">Any</option>
+                        <option value="christian">Christianity</option>
+                        <option value="jewish">Judaism</option>
+                        <option value="muslim">Islam</option>
+                        <option value="hindu">Hinduism</option>
+                        <option value="buddhist">Buddhism</option>
+                        <option value="atheist">Atheist/Agnostic</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="smoking">Smoking Habits</label>
+                    <select id="smoking" name="smoking" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="any">Any</option>
+                        <option value="never">Never</option>
+                        <option value="occasionally">Occasionally</option>
+                        <option value="regularly">Regularly</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="drinking">Drinking Habits</label>
+                    <select id="drinking" name="drinking" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="any">Any</option>
+                        <option value="never">Never</option>
+                        <option value="occasionally">Occasionally</option>
+                        <option value="regularly">Regularly</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="married">Exclude Married?</label>
+                    <select id="married" name="married" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block font-semibold mb-1" for="obese">Exclude Obese?</label>
+                    <select id="obese" name="obese" class="form-select block w-full py-2 pl-3 pr-10 rounded bg-opacity-60 text-gray-900">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                    </select>
+                </div>
+            </div>
+            <div class="w-full flex items-center justify-center pt-4">
+                <button type="submit" class="bg-yellow-400 text-gray-900 font-bold px-6 py-2 rounded-full shadow-md hover:bg-yellow-300 active:bg-yellow-500 transition duration-150">
+                    <i class="fa-solid fa-calculator mr-2"></i>
+                    Calculate
+                </button>
+            </div>
+        </form>
+        <section id="resultsSection" class="glass mt-10 px-6 py-8 shadow-lg hidden text-center">
+            <h3 class="text-xl font-semibold mb-2 text-yellow-300"><i class="fa-solid fa-chart-pie"></i> Estimated Matches</h3>
+            <div class="mb-4">
+                <span class="text-3xl font-bold text-green-300" id="percentageResult">-</span> <span class="text-xl font-medium text-green-100">of the U.S. {target} population</span>
+            </div>
+            <div class="mb-4">
+                <span class="text-2xl font-bold text-blue-200" id="numberResult">-</span> <span class="text-lg text-blue-100">people meet your standards</span>
+            </div>
+            <canvas id="pieChart" width="260" height="220" class="mx-auto my-4"></canvas>
+            <div class="mt-4 text-sm text-gray-300">
+                <span class="font-semibold text-yellow-200">Note:</span> Based on simulated demographic calculations for the U.S. Single {target} population. The stricter your standards, the rarer your ideal partner!
+            </div>
+        </section>
+        <section class="mt-10 mb-16">
+            <div class="bg-gray-700 bg-opacity-40 rounded-2xl p-6">
+                <h4 class="font-bold text-lg mb-2 text-white"><i class="fa-solid fa-question-circle text-yellow-400 mr-2"></i>How does this calculator work?</h4>
+                <ul class="list-disc pl-6 text-gray-200 space-y-1">
+                    <li>This tool uses simulated demographic data based on U.S. Census/CDC statistics for demonstration purposes only.</li>
+                    <li>Matching percentage decreases as you add stricter and more filters.</li>
+                    <li>No data is sent or stored—your inputs remain private in your browser.</li>
+                    <li>Percentages and matches refer to singles in your target group (men or women) in the U.S.</li>
+                    <li>For real-world results, join dating services or seek statistical reports aligned to your country and preferences.</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+    <footer class="text-xs text-center py-6 text-gray-400">
+        &copy; 2024 Standards Calculator Replica | Inspired by Keeper.ai | Demo by Genspark | <a href="https://www.census.gov/" class="text-yellow-300 hover:underline" target="_blank">U.S. Census Bureau</a>
+    </footer>
+    <script>
+        // Best effort, realistic yet random simulation for U.S. population 333M (50.5% women, 49.5% men, ~30% singles)
+        // These distributions are for demonstration only
+
+        const baseUSPop = 333000000;
+        const genderShare = { women: 0.505, men: 0.495 };
+        const singleShare = 0.3; // Approximate (singles)
+        const criteriaPenalties = {
+            age: [0.9, 0.85, 0.7, 0.55, 0.35, 0.18], // 5/10/15/20/25+ year ranges
+            minHeight: [0.99,0.95,0.9,0.8], // <150,150-160,160-170,170-180,180+ penalties
+            minIncome: [0.95,0.7,0.55,0.35,0.18], // thresholds at 25k, 50k, 75k, 100k, 150k+
+            ethnicity: {'any':1.00, 'white':0.57, 'black':0.14, 'asian':0.07, 'hispanic':0.19, 'mixed':0.03},
+            hair: {'any':1.00, 'blonde':0.15, 'brown':0.40, 'black':0.32, 'red':0.03, 'gray':0.1},
+            eyes: {'any':1.00, 'brown':0.65, 'blue':0.15, 'green':0.09, 'hazel':0.08, 'gray':0.03},
+            education: {'any':1.00, 'none':1.00, 'hs':0.85, 'some_college':0.67, 'bachelor':0.35, 'master':0.11},
+            religion: {'any':1.00, 'christian':0.63, 'jewish':0.018, 'muslim':0.012, 'hindu':0.011, 'buddhist':0.006, 'atheist':0.12, 'other':0.14},
+            kids: {'any':1.00,'yes':0.88,'no':0.12},
+            smoking: {'any':1.00, 'never':0.77, 'occasionally':0.13, 'regularly':0.10},
+            drinking: {'any':1.00, 'never':0.12, 'occasionally':0.66, 'regularly':0.22}
+        };
+        const maritalPenalty = 0.70; // remove 30% for married
+        const obesePenalty = 0.68; // remove 32% for obese
+
+        function calcAgeFactor(min,max) {
+            let width = max-min;
+            if (width <=5) return criteriaPenalties.age[0];
+            if (width <=10) return criteriaPenalties.age[1];
+            if (width <=15) return criteriaPenalties.age[2];
+            if (width <=20) return criteriaPenalties.age[3];
+            if (width <=25) return criteriaPenalties.age[4];
+            return criteriaPenalties.age[5];
+        }
+        function calcHeightFactor(minHeight, gender) {
+            // Average US: men ~176cm, women ~162cm, +-6cm SD
+            let avg = gender==='men'?176:162;
+            let diff = minHeight-avg;
+            if (diff <=-6) return criteriaPenalties.minHeight[0];
+            if (diff <=0) return criteriaPenalties.minHeight[1];
+            if (diff <=8) return criteriaPenalties.minHeight[2];
+            if (diff <=16) return criteriaPenalties.minHeight[3];
+            return 0.6; // super-tall
+        }
+        function calcIncomeFactor(minIncome) {
+            if (minIncome<=25000) return criteriaPenalties.minIncome[0];
+            if (minIncome<=50000) return criteriaPenalties.minIncome[1];
+            if (minIncome<=75000) return criteriaPenalties.minIncome[2];
+            if (minIncome<=100000) return criteriaPenalties.minIncome[3];
+            return criteriaPenalties.minIncome[4];
+        }
+
+        document.getElementById('standardsForm').addEventListener('submit', function(e){
+            e.preventDefault();
+            let data = {};
+            document.querySelectorAll('#standardsForm input, #standardsForm select').forEach(function(input){
+                data[input.name] = input.value;
+            });
+
+            // 1. Get base single pop for the target gender
+            let targetGender = data.lookingFor;
+            let singlesInTarget = Math.round(baseUSPop * genderShare[targetGender] * singleShare);
+
+            // 2. Apply filters (multiplicative factors)
+            let score = 1.0;
+
+            // Age
+            let minAge = Math.max(18, parseInt(data.ageMin,10));
+            let maxAge = Math.min(80, parseInt(data.ageMax,10));
+            if (minAge > maxAge) [minAge, maxAge] = [maxAge, minAge];
+            score *= calcAgeFactor(minAge,maxAge);
+
+            // Height
+            score *= calcHeightFactor(parseInt(data.minHeight,10), targetGender);
+
+            // Income
+            score *= calcIncomeFactor(parseInt(data.minIncome,10)||0);
+
+            // Ethnicity
+            score *= criteriaPenalties.ethnicity[data.ethnicity]||1.0;
+
+            // Hair, Eyes
+            score *= criteriaPenalties.hair[data.hair]||1.0;
+            score *= criteriaPenalties.eyes[data.eyes]||1.0;
+
+            // Education
+            score *= criteriaPenalties.education[data.education]||1.0;
+
+            // Religion
+            score *= criteriaPenalties.religion[data.religion]||1.0;
+
+            // Smoking/Drinking
+            score *= criteriaPenalties.smoking[data.smoking]||1.0;
+            score *= criteriaPenalties.drinking[data.drinking]||1.0;
+
+            // Desire kids
+            score *= criteriaPenalties.kids[data.kids]||1.0;
+
+            // Marital/Obese exclusions
+            if (data.married==='yes') score *= maritalPenalty;
+            if (data.obese==='yes') score *= obesePenalty;
+
+            // Realistically:
+            // If all filters set to strict, minimum pool shouldn't drop below 100
+            let nMatches = Math.max( Math.floor(singlesInTarget * score), 100);
+            // Percentage of singles in that gender
+            let percent = 100 * nMatches / singlesInTarget;
+            let percentStr = percent.toFixed(percent<0.05?4:percent<0.5?3:2) + '%';
+
+            // Update results
+            document.getElementById('percentageResult').textContent = percentStr;
+            document.getElementById('numberResult').textContent = nMatches.toLocaleString('en-US');
+            // Pie chart
+            let ctx = document.getElementById('pieChart').getContext('2d');
+            let _target = data.lookingFor === "men" ? "male" : "female";
+            let pieData = {
+                labels: ['Fit Your Standards','Don\'t Fit'],
+                datasets: [{
+                    data: [nMatches, singlesInTarget - nMatches],
+                    backgroundColor: [
+                        'rgba(132,204,22,0.84)',
+                        'rgba(71,85,105,0.48)',
+                    ],
+                    borderWidth: 0
+                }]
+            };
+            if(window._lastPie) window._lastPie.destroy();
+            window._lastPie = new Chart(ctx, {
+                type: 'doughnut',
+                data: pieData,
+                options: {
+                    cutout: '70%',
+                    plugins:{
+                        legend: {display: false},
+                        tooltip: {
+                            callbacks: {
+                                label: (ctx) => `${ctx.label}: ${ctx.parsed} ${ctx.label==='Fit Your Standards'?'(You want these!)':''}`
+                            }
+                        }
+                    }
+                }
+            });
+
+            let results = document.getElementById('resultsSection');
+            results.querySelector('.text-xl.font-medium').textContent = `of the U.S. ${_target} single population`;
+            document.getElementById('resultsSection').classList.remove('hidden');
+            results.scrollIntoView({behavior:'smooth'});
+        });
+    </script>
+</body>
+</html>
